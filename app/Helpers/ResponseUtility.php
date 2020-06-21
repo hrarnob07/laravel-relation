@@ -29,7 +29,7 @@ if(!function_exists('responseCreated')){
 }
 
 if(!function_exists('responsePatched')){
-    function responseCreated($data = null, $message = "request patched successfully"){
+    function responsePatched($data = null, $message = "request patched successfully"){
         $response = [
             'success'=> true,
             'message' => $message
@@ -88,7 +88,7 @@ if(!function_exists('responseUnauthorized')){
     }
 }
 if(!function_exists('responseContactAdmin')){
-    function responseUnauthorized($message ){
+    function responseContactAdmin($message ){
         $response = [
             'success'=> false ,
             'message' => $message

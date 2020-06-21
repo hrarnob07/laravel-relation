@@ -17,7 +17,7 @@ class BaseRequest extends FormRequest
             [
                 'success' => false,
                 'message' => __("The given data is invalid"),
-                'data' =>  $validator->errors()
+                'errors' =>  $validator->errors()
             ]
         );
         throw new ValidationException($validator, $buildResponse);
