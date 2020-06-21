@@ -18,12 +18,13 @@ class Registration extends BaseAction
     {
         try{
 
-            $user =  $this->repository->store($request->validated());
-            $data = $this->repository->generateAuthToken($user);
-
+            $data =  $this->repository->store($request->validated());
+            $data["token"] = $data->createToken('g-admin')->accessToken;
+            return responseOk($data);
 
         }catch (\Throwable $exception){
-            dd($exception->getMessage());
+            return responseCantProcess($exception);
+
         }
     }
 }

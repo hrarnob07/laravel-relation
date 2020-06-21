@@ -7,5 +7,5 @@ namespace App\Repositories\RepositoryInterfaces;
 interface UserRepositoryInterface extends  BaseRepositoryInterface
 {
     function registerUser(array $data );
-    function generateAuthToken(array $data );
+    function generateAuthToken( $user );
 }
