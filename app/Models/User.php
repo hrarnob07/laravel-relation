@@ -38,6 +38,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function branches(){
+        return $this->belongsToMany(Branch::class, 'branch_user', 'user_id','branch_id');
+    }
+
+
+    /**
+     * setting password field using hashing
+     * @param $value
+     */
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
