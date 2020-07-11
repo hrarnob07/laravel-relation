@@ -16,12 +16,12 @@ class BaseRepository implements BaseRepositoryInterface
         $this->model = $model;
     }
 
-    function all($orderBy = "create_at", $order = "desc")
+    function all($orderBy = "created_at", $order = "desc")
     {
         return $this->model->orderBy($orderBy ,$order)->get();
     }
 
-    function paginate($perPage = 15, $orderBy = "create_at", $order = "desc")
+    function paginate($perPage = 15, $orderBy = "created_at", $order = "desc")
     {
         return $this->model->orderBy($orderBy ,$order)->paginate($perPage);
     }

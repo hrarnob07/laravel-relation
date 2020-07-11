@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Auth;
+namespace App\Http\Controllers\Api\V1\Branch;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\Request;
 
-class Login extends BaseAction
+class Index extends BaseAction
 {
     /**
      * Handle the incoming request.
@@ -14,14 +11,15 @@ class Login extends BaseAction
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(LoginRequest $request)
+    public function __invoke()
     {
         try {
-            $data["user"] =$this->repository->generateAuthToken($request->validated());
+            $data["branch"] =$this->repository->paginate();
             return responseOk($data);
 
         }catch (\Throwable $exception){
             return responseCantProcess($exception);
         }
+
     }
 }

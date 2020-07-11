@@ -19,7 +19,7 @@ class Registration extends BaseAction
         try{
 
             $data =  $this->repository->store($request->validated());
-            $data["token"] = $data->createToken('g-admin')->accessToken;
+            $data["token"] = $data->createToken('r-client')->accessToken;
             return responseOk($data);
 
         }catch (\Throwable $exception){

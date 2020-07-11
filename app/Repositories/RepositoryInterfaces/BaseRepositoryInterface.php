@@ -6,8 +6,8 @@ namespace App\Repositories\RepositoryInterfaces;
 
 interface BaseRepositoryInterface
 {
-     function all($orderBy="create_at",$order= "desc");
-     function paginate($perPage= 15, $orderBy="create_at",$order= "desc");
+     function all($orderBy="created_at",$order= "desc");
+     function paginate($perPage= 15, $orderBy="created_at",$order= "desc");
      function store(array $data);
      function storeAll(array $data);
      function update(array $data, $id);

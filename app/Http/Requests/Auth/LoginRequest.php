@@ -23,7 +23,7 @@ class LoginRequest extends BaseRequest
     public function rules()
     {
         return [
-            'email'=>'required',
+            'phone'=>'required',
             'password'=>'required',
         ];
     }

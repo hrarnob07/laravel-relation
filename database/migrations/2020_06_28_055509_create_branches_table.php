@@ -20,10 +20,10 @@ class CreateBranchesTable extends Migration
             $table->string('phone')->nullable();
             $table->double('lat')->nullable();
             $table->double('long')->nullable();
-            $table->timestamp('open_time');
-            $table->timestamp('close_time');
-            $table->timestamp('close_day');
-            $table->enum('status', ['active', 'pending', 'suspend', 'deleted']);
+            $table->timestamp('open_time')->nullable();
+            $table->timestamp('close_time')->nullable();
+            $table->string('close_day')->nullable();
+            $table->enum('status', ['active', 'pending', 'suspend', 'deleted'])->default('pending');
             $table->timestamps();
             $table->softDeletes();
         });

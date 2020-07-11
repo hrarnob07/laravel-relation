@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Repositories\RepositoryInterfaces\UserRepositoryInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use TheSeer\Tokenizer\Exception;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
@@ -21,15 +22,32 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     }
 
-    function generateAuthToken($user)
+    function generateAuthToken($data)
     {
-        $userCanGoToAction = Auth::once($user);
-        if (!empty($userCanGoToAction)) {
-            $token = Auth::user()->createToken('body-gym')->plainTextToken;
-        }
-        else throw new Exception('user not found');
+        try{
+            $user = $this->model->where('phone','=', $data["phone"])->first();
+            if( $user == null){
+                throw new \Exception('The phone number is not valid.');
+            }
+            $password = Hash::check($data["password"], $user->password);
+            if(!$password){
+                throw new \Exception('The phone number is not valid.');
 
-        return $token;
+            }
+            if(auth()->attempt($data)){
+                $token = auth()->user()->createToken('r-client')->accessToken;
+                $user["token"] = $token;
+                return $user;
+            } else {
+              throw new \Exception('Phone number or password is not valid');
+            }
+
+        } catch (\Throwable $exception){
+            throw new \Exception($exception->getMessage());
+        }
+
+
+
 
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\BranchRepository;
+use App\Repositories\RepositoryInterfaces\BranchRepositoryInterface;
 use App\Repositories\RepositoryInterfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -29,5 +31,9 @@ class RepositoryServiceProvider extends ServiceProvider
             UserRepositoryInterface::class,
             UserRepository::class
         );
+
+        $this->app->bind(BranchRepositoryInterface::class,
+                    BranchRepository::class
+            );
     }
 }
