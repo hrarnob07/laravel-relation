@@ -3,7 +3,11 @@
 namespace App\Providers;
 
 use App\Repositories\BranchRepository;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\RepositoryInterfaces\BranchRepositoryInterface;
+use App\Repositories\RepositoryInterfaces\CategoryRepositoryInterface;
+use App\Repositories\RepositoryInterfaces\ProductRepositoryInterface;
 use App\Repositories\RepositoryInterfaces\UserRepositoryInterface;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -32,8 +36,17 @@ class RepositoryServiceProvider extends ServiceProvider
             UserRepository::class
         );
 
-        $this->app->bind(BranchRepositoryInterface::class,
-                    BranchRepository::class
+        $this->app->bind(
+            BranchRepositoryInterface::class,
+            BranchRepository::class
             );
+        $this->app->bind(
+            ProductRepositoryInterface::class,
+            ProductRepository::class
+        );
+        $this->app->bind(
+            CategoryRepositoryInterface::class,
+            CategoryRepository::class
+        );
     }
 }

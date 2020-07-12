@@ -34,5 +34,7 @@ class CreateBranchUserTable extends Migration
             $table->dropForeign('branch_id');
             $table->dropForeign('user_id');
         });
+        Schema::dropIfExists('branch_user');
+
     }
 }

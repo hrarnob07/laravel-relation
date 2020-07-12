@@ -12,6 +12,12 @@ class Show extends BaseAction
      */
     public function __invoke($id)
     {
-        //
+        try {
+            $data["branch"] =$this->repository->find($id);
+            return responseOk($data);
+
+        }catch (\Throwable $exception){
+            return responseCantProcess($exception);
+        }
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\V1\Branch;
 
 
-class Index extends BaseAction
+use App\Http\Requests\BranchAssociationRequest;
+
+class Association extends BaseAction
 {
     /**
      * Handle the incoming request.
@@ -11,15 +13,14 @@ class Index extends BaseAction
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke()
+    public function __invoke(BranchAssociationRequest $request)
     {
         try {
-            $data["branches"] =$this->repository->paginate();
-            return responseOk($data);
+             $this->repository->branchAssociation($request->validated());
+             return responseOk();
 
         }catch (\Throwable $exception){
             return responseCantProcess($exception);
         }
-
     }
 }
