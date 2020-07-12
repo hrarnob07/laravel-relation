@@ -10,7 +10,13 @@ class Product extends Model
     use SoftDeletes;
     protected $fillable =['name','description','status','price','category_id'];
 
-    function category(){
+    public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function sizes(){
+        return $this->belongsToMany(Size::class);
+    }
+
+
 }

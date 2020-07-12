@@ -8,7 +8,9 @@ use App\Repositories\ProductRepository;
 use App\Repositories\RepositoryInterfaces\BranchRepositoryInterface;
 use App\Repositories\RepositoryInterfaces\CategoryRepositoryInterface;
 use App\Repositories\RepositoryInterfaces\ProductRepositoryInterface;
+use App\Repositories\RepositoryInterfaces\SizeRepositoryInterface;
 use App\Repositories\RepositoryInterfaces\UserRepositoryInterface;
+use App\Repositories\SizeRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -47,6 +49,10 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CategoryRepositoryInterface::class,
             CategoryRepository::class
+        );
+        $this->app->bind(
+            SizeRepositoryInterface::class,
+            SizeRepository::class
         );
     }
 }
