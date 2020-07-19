@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('status')->default(1);
-            $table->double('price');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();

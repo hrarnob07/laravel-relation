@@ -26,8 +26,10 @@ class ProductStoreRequest extends BaseRequest
             'name'=>'required|string',
             'status'=>'nullable|boolean',
             'description'=>'nullable|string',
-            'price'=>'required|numeric',
-            'category_id' =>'required'
+            'price'=>'required|array',
+            'size'=>'required|array',
+            'category_id' =>'required',
+            'attachment'=>'nullable|mimes:jpeg,jpg,png | max:5000',
         ];
     }
 }

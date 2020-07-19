@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V1\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Delete extends Controller
+class Delete extends BaseAction
 {
     /**
      * Handle the incoming request.
