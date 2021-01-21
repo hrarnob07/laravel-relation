@@ -46,4 +46,18 @@ class ProductRepository extends BaseRepository implements  ProductRepositoryInte
         return $this->model->with(['category','sizes','images'])->orderBy('created_at','desc')->get();
 
     }
+    function deleteProduct($id)
+    {
+        $product = $this->model->find($id);
+        if($product){
+            $product->sizes()->detach();
+            $product->images()->delete();
+            return $product->delete();
+        }
+        else{
+            throw new Exception('product not found.');
+        }
+
+
+    }
 }

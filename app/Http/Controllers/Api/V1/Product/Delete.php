@@ -13,8 +13,14 @@ class Delete extends BaseAction
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
-        //
+        try{
+             $this->repository->deleteProduct($id);
+            return responseOk();
+
+        }catch (\Throwable $throwable){
+            return responseCantProcess($throwable);
+        }
     }
 }
